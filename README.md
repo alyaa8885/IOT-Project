@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Agent Smartwatch</title>
+<style>
+body { font-family: Arial; background: #e6f0ff; color: #333; margin:0; padding:0; }
+header { background:#99ccff; color:white; text-align:center; padding:25px;}
+section { max-width:900px; margin:15px auto; padding:20px; background:#f0f8ff; border-radius:12px; box-shadow:0 0 12px rgba(0,0,0,0.08);}
+ul { line-height:1.6; list-style:none; padding:0;}
+ul li { padding:10px; margin:5px 0; background:#cce0ff; border-radius:8px; cursor:pointer; transition: background 0.3s;}
+ul li:hover { background:#99ccff; color:white; }
+.feature-details { display:none; margin-top:5px; font-size:0.9em; color:#333; background:#e6f0ff; padding:5px; border-radius:5px; }
+footer { text-align:center; padding:15px; background:#99ccff; color:white; margin-top:20px;}
+.watch-model { position:relative; width:120px; height:140px; margin:20px auto; }
+.watch-body { width:100px; height:100px; background:#99ccff; border-radius:15px; position:absolute; top:20px; left:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2);}
+.watch-screen { width:70px; height:50px; background:#cce0ff; border-radius:8px; position:absolute; top:40px; left:25px; cursor:pointer; transition: background 0.3s;}
+.watch-strap-left, .watch-strap-right { width:20px; height:40px; background:#99ccff; border-radius:10px; position:absolute; top:0;}
+.watch-strap-left { left:0;} .watch-strap-right{right:0;}
+#mood-text { text-align:center; font-weight:bold; margin-top:10px; }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Mini Agent Smartwatch</h1>
+<p>Your personal health, mood, and disability assistant</p>
+</header>
+
+<section>
+<h2>Features (Click to expand)</h2>
+<ul>
+<li>
+  Health & Safety
+  <div class="feature-details">Heart rate, temperature, stress alerts, fall detection, SOS button, medication reminders.</div>
+</li>
+<li>
+  Disability Assistance
+  <div class="feature-details">Voice assistant, large text display, adaptive alerts, location sharing.</div>
+</li>
+<li>
+  Mental Well-being
+  <div class="feature-details">Mood tracking, relaxation tips, positive messages, LED color indicators.</div>
+</li>
+<li>
+  Daily Life Management
+  <div class="feature-details">Task reminders, school/work notifications, fitness tracking.</div>
+</li>
+<li>
+  Customization
+  <div class="feature-details">Change straps, colors, and display layout.</div>
+</li>
+<li>
+  Eco-Friendly
+  <div class="feature-details">Solar or kinetic charging for sustainability.</div>
+</li>
+</ul>
+</section>
+
+<section>
+<h2>Mini Agent Smartwatch Model</h2>
+<p>Click below to view the interactive 3D model in Tinkercad:</p>
+<a href="https://www.tinkercad.com/things/5ZddvJ0G2ZK" target="_blank">View 3D Model</a>
+
+<div class="watch-model">
+  <div class="watch-body"></div>
+  <div class="watch-screen" id="watch-screen"></div>
+  <div class="watch-strap-left"></div>
+  <div class="watch-strap-right"></div>
+</div>
+<p id="mood-text">Mood: Happy</p>
+</section>
+
+<footer>
+&copy; 2025 Mini Agent Smartwatch
+</footer>
+
+<script>
+// Watch screen mood cycling
+const screen = document.getElementById("watch-screen");
+const moodText = document.getElementById("mood-text");
+const moods = [
+  { mood:"Happy", color:"#cce0ff"},
+  { mood:"Relaxed", color:"#b3ffd9"},
+  { mood:"Energetic", color:"#ffd9b3"},
+  { mood:"Tired", color:"#ffb3b3"}
+];
+let current = 0;
+screen.addEventListener("click", ()=>{
+  current = (current+1)%moods.length;
+  screen.style.backgroundColor = moods[current].color;
+  moodText.textContent = "Mood: "+moods[current].mood;
+});
+
+// Interactive features expansion
+const featureItems = document.querySelectorAll("ul li");
+featureItems.forEach(item=>{
+  item.addEventListener("click", ()=>{
+    const detail = item.querySelector(".feature-details");
+    detail.style.display = (detail.style.display==="block") ? "none" : "block";
+  });
+});
+</script>
+
+</body>
+</html>
